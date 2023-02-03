@@ -6,7 +6,7 @@ public class Logic : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 1f;
-    public float faceSpeed = 10f;
+    public float faceSpeed = 1f;
     public Camera mainCamera;
     void Start()
     {
@@ -16,9 +16,9 @@ public class Logic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
         float direction = Input.GetAxis("Horizontal");
-        transform.Rotate(Vector3.right * direction * faceSpeed);
-        mainCamera.transform.position = new Vector3(0, transform.position.y, -10);
+        //float direction = Input.mousePosition.x;
+        transform.position += new Vector3(direction * faceSpeed * Time.deltaTime, 0, 0);
+        //transform.Rotate(Vector3.right * direction * faceSpeed);
     }
 }
