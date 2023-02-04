@@ -62,13 +62,14 @@ public class SnakeController : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         Debug.Log(gm == null);
         Debug.Log("triggred");
+        if(collision.gameObject.CompareTag("Trash")) {
+            gm.gameOver = true;
+        }
         //gm.gameOver = true;
     }
     
     private void OnTriggerEnter2D(Collider2D trigger){
-        if (trigger.gameObject.tag == "MainCamera"){
-                Debug.Log("triggred");
-        }
+        Debug.Log("triggred");
         
     }
 
