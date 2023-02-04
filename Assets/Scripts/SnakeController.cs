@@ -8,6 +8,7 @@ public class SnakeController : MonoBehaviour
     public float MoveSpeed = 5;
     public float SteerSpeed = 180;
     private GameManager gm;
+    public CameraScript cam;
 
     private List<GameObject> BodyParts = new List<GameObject>();
     private List<Vector3> PositionHistory = new List<Vector3>();
@@ -23,7 +24,7 @@ public class SnakeController : MonoBehaviour
     {
         if (gm.gameOver) return;
         // move forward
-        transform.position += transform.forward * MoveSpeed * Time.deltaTime * -1;
+        transform.position += (transform.forward * MoveSpeed * Time.deltaTime * -1);
 
 
 
@@ -31,15 +32,14 @@ public class SnakeController : MonoBehaviour
         float steerDirection = Input.GetAxis("Horizontal");
 
         Vector3 rotationVector = Vector3.up * steerDirection * SteerSpeed * Time.deltaTime;
-
-        transform.Rotate(rotationVector);
-
+            transform.Rotate(rotationVector);
         //block the root from going backwards
-        //if (transform.forward.y < 0)
-        //{
-        //    transform.Rotate(-rotationVector);
-        //}
-        
+        /*
+        if (transform.forward.y < 0)
+        {
+            transform.Rotate(-rotationVector);
+        }
+        */
 
 
 
@@ -54,7 +54,7 @@ public class SnakeController : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         Debug.Log(gm == null);
-        gm.gameOver = true;
+        //gm.gameOver = true;
     }
 
 }
