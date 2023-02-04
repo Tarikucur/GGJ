@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
     private static GameManager gm;
     public GameObject head;
     public bool gameOver = false;
+    public double depth;
+    public int highScore = 0;
 
     private void Awake()
     {
         if (gm == null)
         {
+            highScore = PlayerPrefs.GetInt("highscores");
             gm = this;
             DontDestroyOnLoad(gm);
         }

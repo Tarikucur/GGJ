@@ -9,6 +9,7 @@ TagManager:
   - Cam
   - Trash
   - Stone
+  - Depth-Text-Field
   layers:
   - Default
   - TransparentFX
