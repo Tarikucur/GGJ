@@ -8,6 +8,7 @@ TagManager:
   - Snake
   - Cam
   - Trash
+  - Stone
   layers:
   - Default
   - TransparentFX

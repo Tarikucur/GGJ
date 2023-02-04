@@ -1,3 +1,4 @@
+//using System;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
@@ -7,13 +8,14 @@ public class ObjectSpawner : MonoBehaviour
     public float spawnInterval = 1.0f; // The interval at which to spawn cubes
     public float yLevel;
     public GameObject[] trash;
+    public GameObject[] stone;
     public GameObject[] powerUp;
 
     private void Start()
     {
         // Invoke the SpawnCube method repeatedly every spawnInterval seconds
         InvokeRepeating("SpawnCube",0.1f, 0.1f);
-        trash = GameObject.FindGameObjectsWithTag("Trash");
+        // trash = GameObject.FindGameObjectsWithTag("Trash");
         //Invoke("SpawnCube",spawnInterval, spawnInterval);
         yLevel = 0;
     }
@@ -28,7 +30,11 @@ public class ObjectSpawner : MonoBehaviour
 
         // Add the CubeMover component to the cube
         if(mainCamera.position.y < yLevel) {
-            GameObject obj = Instantiate(trash[Random.Range(0, trash.Length)], new Vector3(x, mainCamera.position.y - 7, 0), Quaternion.identity);
+            GameObject obj;
+            if(Random.Range(0,11) < Mathf.Min((int) -mainCamera.position.y / 10, 9))
+                obj = Instantiate(trash[Random.Range(0, trash.Length)], new Vector3(x, mainCamera.position.y - 9, 0), Quaternion.identity);
+            else
+                obj = Instantiate(stone[Random.Range(0, stone.Length)], new Vector3(x, mainCamera.position.y - 9, 0), Quaternion.identity);
             obj.transform.Rotate(new Vector3(0, 0 , Random.Range(1,359)));
             ObjectMover mover = obj.AddComponent<ObjectMover>();
             yLevel = mainCamera.position.y - 3;
