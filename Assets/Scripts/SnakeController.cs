@@ -8,7 +8,7 @@ public class SnakeController : MonoBehaviour
     public float SteerSpeed = 180;
     public int Gap;
 
-    public GameObject BodyPrefab;
+    // public GameObject BodyPrefab;
 
     private List<GameObject> BodyParts = new List<GameObject>();
     private List<Vector3> PositionHistory = new List<Vector3>();
@@ -34,14 +34,15 @@ public class SnakeController : MonoBehaviour
         // store position history
         PositionHistory.Insert(0, transform.position);
 
-        GrowSnake(transform);
+        // GrowSnake(transform);
         
     }
 
-    private void GrowSnake(Transform transform)
-    {
-        // GameObject body = Instantiate(BodyPrefab, transform,true);
-        var newObj = GameObject.Instantiate(BodyPrefab, transform);
-        newObj.transform.parent = GameObject.Find("Body").transform;
-    }
+    // private void GrowSnake(Transform transform)
+    // {
+    // GameObject body = Instantiate(BodyPrefab, transform,true);
+    // var newObj = GameObject.Instantiate(BodyPrefab, transform);
+    // newObj.transform.parent = GameObject.Find("Body").transform;
+    // newObj.transform.localScale *= Random.Range(0.9f, 1.1f);
+    // }
 }
