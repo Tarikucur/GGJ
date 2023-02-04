@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private static GameManager gm;
     public GameObject head;
     public bool gameOver = false;
+    public float deltaSpeed = 0.05f;
 
     private void Awake()
     {

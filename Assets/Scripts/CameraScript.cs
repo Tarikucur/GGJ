@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
 
     public float camSpeed = 5;
     public GameManager gm;
+    public SnakeController sc;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,9 @@ public class CameraScript : MonoBehaviour
     void Update()
     {
         if (gm.gameOver) return;
+        camSpeed += gm.deltaSpeed * Time.deltaTime;
         //move the camera
         transform.position += Vector3.down * camSpeed * Time.deltaTime;
+        //transform.position += new Vector3(0, sc.finalMoveSpeed,;
     }
 }
