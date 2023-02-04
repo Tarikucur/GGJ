@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,21 +7,21 @@ public class SnakeController : MonoBehaviour
 {
     public float MoveSpeed = 5;
     public float SteerSpeed = 180;
-    public int Gap;
-
-    // public GameObject BodyPrefab;
+    private GameManager gm;
 
     private List<GameObject> BodyParts = new List<GameObject>();
     private List<Vector3> PositionHistory = new List<Vector3>();
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+        Debug.Log(gm == null);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gm.gameOver) return;
         // move forward
         transform.position += transform.forward * MoveSpeed * Time.deltaTime * -1;
 
@@ -28,7 +29,19 @@ public class SnakeController : MonoBehaviour
 
         // steer
         float steerDirection = Input.GetAxis("Horizontal");
-        transform.Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
+
+        Vector3 rotationVector = Vector3.up * steerDirection * SteerSpeed * Time.deltaTime;
+
+        transform.Rotate(rotationVector);
+
+        //block the root from going backwards
+        //if (transform.forward.y < 0)
+        //{
+        //    transform.Rotate(-rotationVector);
+        //}
+        
+
+
 
 
         // store position history
@@ -37,12 +50,11 @@ public class SnakeController : MonoBehaviour
         // GrowSnake(transform);
         
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+        Debug.Log(gm == null);
+        gm.gameOver = true;
+    }
 
-    // private void GrowSnake(Transform transform)
-    // {
-    // GameObject body = Instantiate(BodyPrefab, transform,true);
-    // var newObj = GameObject.Instantiate(BodyPrefab, transform);
-    // newObj.transform.parent = GameObject.Find("Body").transform;
-    // newObj.transform.localScale *= Random.Range(0.9f, 1.1f);
-    // }
 }
