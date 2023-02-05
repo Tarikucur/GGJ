@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject head;
     public bool gameOver = false;
     public float deltaSpeed = 0.05f;
+    public float SteerSpeed = 180;
 
     private void Awake()
     {

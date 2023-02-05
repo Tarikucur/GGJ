@@ -8,8 +8,9 @@ using UnityEngine;
 public class SnakeController : MonoBehaviour
 {
     public float MoveSpeed = 5;
+    // public float DeltaAcceleration = 0;
     //public float finalMoveSpeed = 0f;
-    public float SteerSpeed = 180;
+    
     private GameManager gm;
     public CameraScript cam;
 
@@ -32,12 +33,12 @@ public class SnakeController : MonoBehaviour
         transform.position += (transform.forward * MoveSpeed * Time.deltaTime * -1);
         //finalMoveSpeed = (MoveSpeed * Time.deltaTime * -1);
         //Mov
-        MoveSpeed += 0.1f * Time.deltaTime;
+        MoveSpeed += gm.deltaSpeed * Time.deltaTime;
 
         // steer
         float steerDirection = Input.GetAxis("Horizontal");
 
-        Vector3 rotationVector = Vector3.up * steerDirection * SteerSpeed * Time.deltaTime;
+        Vector3 rotationVector = Vector3.up * steerDirection * gm.SteerSpeed * Time.deltaTime;
             transform.Rotate(rotationVector);
         //block the root from going backwards
         /*

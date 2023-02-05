@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -650,7 +650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 772130187}
   gameOver: 1
-  deltaSpeed: 0.1
+  deltaSpeed: 0.02
+  SteerSpeed: 360
 --- !u!4 &676416919
 Transform:
   m_ObjectHideFlags: 0
@@ -2402,7 +2403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 1
-  SteerSpeed: 360
   cam: {fileID: 963194229}
 --- !u!68 &4969948440162262177
 EdgeCollider2D:
