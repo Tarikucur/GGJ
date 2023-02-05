@@ -787,6 +787,8 @@ MonoBehaviour:
   gameOver: 1
   deltaSpeed: 0.004
   SteerSpeed: 90
+  depth: 0
+  highScore: 0
 --- !u!4 &676416919
 Transform:
   m_ObjectHideFlags: 0
@@ -1313,6 +1315,8 @@ MonoBehaviour:
   camSpeed: 1
   gm: {fileID: 676416918}
   sc: {fileID: 4969948440162262176}
+  depthText: {fileID: 0}
+  bestText: {fileID: 0}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,6 +1645,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ed1b9d319b83aa46ad9d166807a3ce1, type: 3}
   - {fileID: 8300000, guid: ebda61a4e8c1f654dbbf6b58ebe21229, type: 3}
   - {fileID: 8300000, guid: f43459a01fd4d484ab66657e02e2610c, type: 3}
+  - {fileID: 8300000, guid: b329bd247a324404c870e05dfea523ae, type: 3}
+  - {fileID: 8300000, guid: c381d0c3d58b7aa44adf9f1e868df0fa, type: 3}
+  - {fileID: 8300000, guid: 4e82b594dae732241abfee73c6c62c96, type: 3}
 --- !u!82 &1335629958
 AudioSource:
   m_ObjectHideFlags: 0

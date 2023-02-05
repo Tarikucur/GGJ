@@ -76,30 +76,30 @@ public class SnakeController : MonoBehaviour
         //
         if (collision.gameObject.tag == "Trash1")
         {
-            AudioManager.instance.PlaySound(7); //powerup
+            AudioManager.instance.PlaySound(16); //cam
             gm.gameOver = true;
         }
-        else if (collision.gameObject.tag == "Trash2")
+        else if (collision.gameObject.tag == "Trash2") //pet1
         {
-            AudioManager.instance.PlaySound(5);
+            AudioManager.instance.PlaySound(14);
             gm.gameOver = true;
         }
-        else if (collision.gameObject.tag == "Trash3")
+        else if (collision.gameObject.tag == "Trash3") //pet2
         {
-            AudioManager.instance.PlaySound(6);
+            AudioManager.instance.PlaySound(15);
             gm.gameOver = true;
         }
-        else if (collision.gameObject.tag == "Trash4")
+        else if (collision.gameObject.tag == "Trash4")//teneke
         {
             AudioManager.instance.PlaySound(8);
             gm.gameOver = true;
         }
-        else if (collision.gameObject.tag == "Trash5")
+        else if (collision.gameObject.tag == "Trash5")//teneke
         {
             AudioManager.instance.PlaySound(9);
             gm.gameOver = true;
         }
-        else if (collision.gameObject.tag == "Trash6")
+        else if (collision.gameObject.tag == "Trash6")//poþet
         {
             AudioManager.instance.PlaySound(6);
             gm.gameOver = true;
