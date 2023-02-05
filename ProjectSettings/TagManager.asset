@@ -18,6 +18,7 @@ TagManager:
   - Trash4
   - Trash5
   - Trash6
+  - Depth-Text-Field
   layers:
   - Default
   - TransparentFX

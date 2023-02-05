@@ -1,3 +1,4 @@
+using System.Dynamic;
 // using System.Diagnostics;
 // using System.Diagnostics;
 using System;
@@ -16,6 +17,7 @@ public class SnakeController : MonoBehaviour
 
     private List<GameObject> BodyParts = new List<GameObject>();
     private List<Vector3> PositionHistory = new List<Vector3>();
+    private float radius;
 
     
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class SnakeController : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         Debug.Log(gm == null);
+        radius = MoveSpeed / gm.SteerSpeed;
     }
 
     // Update is called once per frame
@@ -36,10 +39,13 @@ public class SnakeController : MonoBehaviour
         MoveSpeed += gm.deltaSpeed * Time.deltaTime;
 
         // steer
-        float steerDirection = Input.GetAxis("Horizontal");
+        float steerDirection = - Input.GetAxis("Horizontal");
 
         Vector3 rotationVector = Vector3.up * steerDirection * gm.SteerSpeed * Time.deltaTime;
-            transform.Rotate(rotationVector);
+        transform.Rotate(rotationVector);
+
+        //gm.SteerSpeed = (Mathf.Sqrt(MoveSpeed) / radius);
+        gm.SteerSpeed = (MoveSpeed/ radius);
         //block the root from going backwards
         /*
         if (transform.forward.y < 0)

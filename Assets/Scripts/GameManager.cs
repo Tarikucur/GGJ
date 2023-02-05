@@ -9,13 +9,18 @@ public class GameManager : MonoBehaviour
     private static GameManager gm;
     public GameObject head;
     public bool gameOver = false;
-    public float deltaSpeed = 0.05f;
+    public float deltaSpeed = 0.015f;
     public float SteerSpeed = 180;
+    private float SteerSpeedBaseHolder = 180;
+    //private float value = 0;
+    public double depth;
+    public int highScore = 0;
 
     private void Awake()
     {
         if (gm == null)
         {
+            highScore = PlayerPrefs.GetInt("highscore");
             gm = this;
             DontDestroyOnLoad(gm);
         }
@@ -29,5 +34,11 @@ public class GameManager : MonoBehaviour
     {
         // Console.Log("clicked");
         gameOver = false;
+    }
+    private void Start() {
+        SteerSpeedBaseHolder = SteerSpeed;
+    }
+    private void Update() {
+        //SteerSpeed = 
     }
 }
