@@ -9,6 +9,9 @@ TagManager:
   - Cam
   - Trash
   - Stone
+  - Cave
+  - Water
+  - Acid
   layers:
   - Default
   - TransparentFX
