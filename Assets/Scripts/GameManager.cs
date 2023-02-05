@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public double depth;
     public int highScore = 0;
 
+    public bool recentlyDead = false;
     private void Awake()
     {
         if (gm == null)
@@ -40,5 +41,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update() {
         //SteerSpeed = 
+    }
+    public void ToggleRecentlyDead()
+    {
+         recentlyDead= false;
+        
     }
 }

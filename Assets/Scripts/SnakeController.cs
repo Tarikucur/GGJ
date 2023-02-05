@@ -71,6 +71,7 @@ public class SnakeController : MonoBehaviour
         Debug.Log("triggred");
         if(collision.gameObject.CompareTag("Trash")) {
             gm.gameOver = true;
+            gm.recentlyDead = true;
         }
         //gm.gameOver = true;
         //
@@ -78,31 +79,37 @@ public class SnakeController : MonoBehaviour
         {
             AudioManager.instance.PlaySound(16); //cam
             gm.gameOver = true;
+            gm.recentlyDead = true;
         }
         else if (collision.gameObject.tag == "Trash2") //pet1
         {
             AudioManager.instance.PlaySound(14);
             gm.gameOver = true;
+            gm.recentlyDead = true;
         }
         else if (collision.gameObject.tag == "Trash3") //pet2
         {
             AudioManager.instance.PlaySound(15);
             gm.gameOver = true;
+            gm.recentlyDead = true;
         }
         else if (collision.gameObject.tag == "Trash4")//teneke
         {
             AudioManager.instance.PlaySound(8);
             gm.gameOver = true;
+            gm.recentlyDead = true;
         }
         else if (collision.gameObject.tag == "Trash5")//teneke
         {
             AudioManager.instance.PlaySound(9);
             gm.gameOver = true;
+            gm.recentlyDead = true;
         }
         else if (collision.gameObject.tag == "Trash6")//poþet
         {
             AudioManager.instance.PlaySound(6);
             gm.gameOver = true;
+            gm.recentlyDead = true;
         }
     }
     
@@ -122,5 +129,4 @@ public class SnakeController : MonoBehaviour
         Debug.Log("trigger exit");
     }
     
-
 }
