@@ -20,6 +20,8 @@ TagManager:
   - Trash6
   - Depth-Text-Field
   - Worm
+  - Edges
+  - Acid-Head
   layers:
   - Default
   - TransparentFX

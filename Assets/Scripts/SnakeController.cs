@@ -9,6 +9,7 @@ using UnityEngine;
 public class SnakeController : MonoBehaviour
 {
     public float MoveSpeed = 5;
+    public bool acid;
     // public float DeltaAcceleration = 0;
     //public float finalMoveSpeed = 0f;
     
@@ -17,7 +18,7 @@ public class SnakeController : MonoBehaviour
 
     private List<GameObject> BodyParts = new List<GameObject>();
     private List<Vector3> PositionHistory = new List<Vector3>();
-    private float radius;
+    public float radius;
 
     
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class SnakeController : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         Debug.Log(gm == null);
         radius = MoveSpeed / gm.SteerSpeed;
+        GameObject.FindGameObjectWithTag("Acid-Head").transform.localScale = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -69,24 +71,26 @@ public class SnakeController : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         Debug.Log(gm == null);
         Debug.Log("triggred");
-        if(collision.gameObject.CompareTag("Trash")) {
-            gm.gameOver = true;
+        if(acid && !collision.gameObject.CompareTag("Edges")){
+            collision.gameObject.SetActive(false);
+            acid = false;
+            GameObject.FindGameObjectWithTag("Acid-Head").transform.localScale = new Vector3(0, 0, 0);
         }
         //gm.gameOver = true;
         //
-        if (collision.gameObject.tag == "Trash1")
+        else if (collision.gameObject.tag == "Trash1")
         {
-            AudioManager.instance.PlaySound(7); //powerup
+            AudioManager.instance.PlaySound(16); // 
             gm.gameOver = true;
         }
         else if (collision.gameObject.tag == "Trash2")
         {
-            AudioManager.instance.PlaySound(5);
+            AudioManager.instance.PlaySound(14);
             gm.gameOver = true;
         }
         else if (collision.gameObject.tag == "Trash3")
         {
-            AudioManager.instance.PlaySound(6);
+            AudioManager.instance.PlaySound(15);
             gm.gameOver = true;
         }
         else if (collision.gameObject.tag == "Trash4")
