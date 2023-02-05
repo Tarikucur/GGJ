@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 3913976889853165823}
   m_Layer: 0
   m_Name: 6_plastic-bag
-  m_TagString: Trash
+  m_TagString: Trash6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

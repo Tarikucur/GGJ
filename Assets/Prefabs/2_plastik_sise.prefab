@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 4886804255010094850}
   m_Layer: 0
   m_Name: 2_plastik_sise
-  m_TagString: Trash
+  m_TagString: Trash2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

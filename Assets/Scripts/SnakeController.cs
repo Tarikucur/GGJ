@@ -66,6 +66,37 @@ public class SnakeController : MonoBehaviour
             gm.gameOver = true;
         }
         //gm.gameOver = true;
+        //
+        if (collision.gameObject.tag == "Trash1")
+        {
+            AudioManager.instance.PlaySound(7); //powerup
+            gm.gameOver = true;
+        }
+        else if (collision.gameObject.tag == "Trash2")
+        {
+            AudioManager.instance.PlaySound(5);
+            gm.gameOver = true;
+        }
+        else if (collision.gameObject.tag == "Trash3")
+        {
+            AudioManager.instance.PlaySound(6);
+            gm.gameOver = true;
+        }
+        else if (collision.gameObject.tag == "Trash4")
+        {
+            AudioManager.instance.PlaySound(8);
+            gm.gameOver = true;
+        }
+        else if (collision.gameObject.tag == "Trash5")
+        {
+            AudioManager.instance.PlaySound(9);
+            gm.gameOver = true;
+        }
+        else if (collision.gameObject.tag == "Trash6")
+        {
+            AudioManager.instance.PlaySound(6);
+            gm.gameOver = true;
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D trigger){

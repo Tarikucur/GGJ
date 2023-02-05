@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1744785879078680327}
   m_Layer: 0
   m_Name: 1_yesil_cam
-  m_TagString: Trash
+  m_TagString: Trash1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
