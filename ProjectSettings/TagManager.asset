@@ -19,6 +19,7 @@ TagManager:
   - Trash5
   - Trash6
   - Depth-Text-Field
+  - Worm
   layers:
   - Default
   - TransparentFX
