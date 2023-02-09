@@ -1,3 +1,4 @@
+using System.Dynamic;
 // using System.Diagnostics;
 // using System.Diagnostics;
 using System;
@@ -8,13 +9,16 @@ using UnityEngine;
 public class SnakeController : MonoBehaviour
 {
     public float MoveSpeed = 5;
+    public bool acid;
+    // public float DeltaAcceleration = 0;
     //public float finalMoveSpeed = 0f;
-    public float SteerSpeed = 180;
+    
     private GameManager gm;
     public CameraScript cam;
 
     private List<GameObject> BodyParts = new List<GameObject>();
     private List<Vector3> PositionHistory = new List<Vector3>();
+    public float radius;
 
     
     // Start is called before the first frame update
@@ -22,6 +26,8 @@ public class SnakeController : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         Debug.Log(gm == null);
+        radius = MoveSpeed / gm.SteerSpeed;
+        GameObject.FindGameObjectWithTag("Acid-Head").transform.localScale = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -32,13 +38,16 @@ public class SnakeController : MonoBehaviour
         transform.position += (transform.forward * MoveSpeed * Time.deltaTime * -1);
         //finalMoveSpeed = (MoveSpeed * Time.deltaTime * -1);
         //Mov
-        MoveSpeed += 0.1f * Time.deltaTime;
+        MoveSpeed += gm.deltaSpeed * Time.deltaTime;
 
         // steer
-        float steerDirection = Input.GetAxis("Horizontal");
+        float steerDirection = - Input.GetAxis("Horizontal");
 
-        Vector3 rotationVector = Vector3.up * steerDirection * SteerSpeed * Time.deltaTime;
-            transform.Rotate(rotationVector);
+        Vector3 rotationVector = Vector3.up * steerDirection * gm.SteerSpeed * Time.deltaTime;
+        transform.Rotate(rotationVector);
+
+        //gm.SteerSpeed = (Mathf.Sqrt(MoveSpeed) / radius);
+        gm.SteerSpeed = (MoveSpeed/ radius);
         //block the root from going backwards
         /*
         if (transform.forward.y < 0)
@@ -62,23 +71,26 @@ public class SnakeController : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         Debug.Log(gm == null);
         Debug.Log("triggred");
-        if(collision.gameObject.CompareTag("Trash")) {
-            gm.gameOver = true;
+        if(acid && !collision.gameObject.CompareTag("Edges")){
+            collision.gameObject.SetActive(false);
+            acid = false;
+            GameObject.FindGameObjectWithTag("Acid-Head").transform.localScale = new Vector3(0, 0, 0);
         }
+        //gm.gameOver = true;
         //
-        if (collision.gameObject.tag == "Trash1")
+        else if (collision.gameObject.tag == "Trash1")
         {
-            AudioManager.instance.PlaySound(7); //powerup
+            AudioManager.instance.PlaySound(16); // 
             gm.gameOver = true;
         }
         else if (collision.gameObject.tag == "Trash2")
         {
-            AudioManager.instance.PlaySound(5);
+            AudioManager.instance.PlaySound(14);
             gm.gameOver = true;
         }
         else if (collision.gameObject.tag == "Trash3")
         {
-            AudioManager.instance.PlaySound(6);
+            AudioManager.instance.PlaySound(15);
             gm.gameOver = true;
         }
         else if (collision.gameObject.tag == "Trash4")
@@ -96,8 +108,6 @@ public class SnakeController : MonoBehaviour
             AudioManager.instance.PlaySound(6);
             gm.gameOver = true;
         }
-
-        //gm.gameOver = true;
     }
     
     private void OnTriggerEnter2D(Collider2D trigger){

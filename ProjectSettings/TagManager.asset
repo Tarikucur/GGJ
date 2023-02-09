@@ -9,12 +9,19 @@ TagManager:
   - Cam
   - Trash
   - Stone
+  - Cave
+  - Water
+  - Acid
   - Trash1
   - Trash2
   - Trash3
   - Trash4
   - Trash5
   - Trash6
+  - Depth-Text-Field
+  - Worm
+  - Edges
+  - Acid-Head
   layers:
   - Default
   - TransparentFX
